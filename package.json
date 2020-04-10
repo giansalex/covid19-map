@@ -1,0 +1,31 @@
+{
+  "name": "covid19-map",
+  "version": "1.0.0",
+  "description": "Map COVID19 at Peru",
+  "private": true,
+  "scripts": {
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/giansalex/covid19-map.git"
+  },
+  "keywords": [
+    "covid19-peru",
+    "coronavirus"
+  ],
+  "author": "Giancarlos Salas",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/giansalex/covid19-map/issues"
+  },
+  "homepage": "https://github.com/giansalex/covid19-map#readme",
+  "devDependencies": {
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11"
+  },
+  "dependencies": {
+    "leaflet": "^1.6.0",
+    "leaflet.markercluster": "^1.4.1"
+  }
+}
