@@ -4,6 +4,8 @@
   "description": "Map COVID19 at Peru",
   "private": true,
   "scripts": {
+    "watch": "webpack --watch",
+    "start": "webpack-dev-server --open",
     "build": "webpack"
   },
   "repository": {
@@ -21,8 +23,13 @@
   },
   "homepage": "https://github.com/giansalex/covid19-map#readme",
   "devDependencies": {
+    "css-loader": "^3.5.1",
+    "file-loader": "^6.0.0",
+    "mini-css-extract-plugin": "^0.9.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.3",
     "webpack": "^4.42.1",
-    "webpack-cli": "^3.3.11"
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
   },
   "dependencies": {
     "leaflet": "^1.6.0",

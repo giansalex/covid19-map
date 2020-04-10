@@ -1,3 +1,6 @@
+import L from 'leaflet';
+import _ from 'leaflet.markercluster';
+
 function covid19(mapId, baseDataUrl) {
     var mymap;
     
@@ -6,7 +9,7 @@ function covid19(mapId, baseDataUrl) {
     }
 
     function getBrowserLocation() {
-        return new Promise(function (resolve, reject) {
+        return new Promise((resolve, reject) => {
             navigator.geolocation.getCurrentPosition(
               function success(position) {
                 resolve(position.coords);
@@ -20,9 +23,7 @@ function covid19(mapId, baseDataUrl) {
 
     function getUserLocation() {
         if ("geolocation" in navigator) {
-          return getBrowserLocation().catch(function () {
-            return getApiLocation();
-          });
+          return getBrowserLocation().catch(() => getApiLocation());
         }
 
         return getApiLocation();
@@ -44,13 +45,13 @@ function covid19(mapId, baseDataUrl) {
     function createLegend(data) {
         var info = L.control();
 
-        info.onAdd = function (map) {
+        info.onAdd = function() {
             this._div = L.DomUtil.create('div', 'info');
             this.update();
             return this._div;
         };
 
-        info.update = function (props) {
+        info.update = function() {
             var content = '<h4>COVID-19 en Perú</h4><span class="line danger"></span> ' + data.actives +'<br/><span class="line success"></span> ' + data.recovereds +'<br/><span class="line dark"></span> ' + data.deaths +'<br/>';
             content +='<br/><b>Actualizado</b><br/> ' + formatDate('DD/MM/YYYY', data.date)
             this._div.innerHTML = content;
@@ -109,7 +110,7 @@ function covid19(mapId, baseDataUrl) {
 
     function requestJson(url) {
 
-        return new Promise(function (resolve, reject) {
+        return new Promise((resolve, reject) => {
             var xhr = new XMLHttpRequest();
     
             xhr.onload = function() {
@@ -134,3 +135,4 @@ function covid19(mapId, baseDataUrl) {
         loadData();
     }
 }
+window.covid19 = covid19;
