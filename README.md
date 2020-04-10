@@ -18,6 +18,7 @@ Copy files
 
 ```
 |
+|-images/
 |-dist/
 |-favicon.png
 |-manifest.json

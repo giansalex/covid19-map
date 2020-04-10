@@ -6,7 +6,6 @@ const path = require('path');
 module.exports = {
   entry: {
       main: [
-        './images/peru.png',
         './node_modules/leaflet/dist/images/marker-icon-2x.png',
         './node_modules/leaflet/dist/images/marker-shadow.png',
         './node_modules/leaflet/dist/leaflet.css',
