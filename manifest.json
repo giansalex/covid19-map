@@ -1,0 +1,15 @@
+{
+    "short_name": "COVID-19 en Perú",
+    "name": "Mapa de infectados por COVID-19 en Perú",
+    "icons": [
+      {
+        "src": "css/images/peru.png",
+        "type": "image/png",
+        "sizes": "512x512"
+      }
+    ],
+    "display": "standalone",
+    "background_color": "#d83434",
+    "theme_color": "#d83434",
+    "start_url": "index.html?utm_source=homescreen"
+  }
