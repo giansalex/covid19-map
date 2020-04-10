@@ -3,7 +3,7 @@
     "name": "Mapa de infectados por COVID-19 en Perú",
     "icons": [
       {
-        "src": "css/images/peru.png",
+        "src": "images/peru.png",
         "type": "image/png",
         "sizes": "512x512"
       }
