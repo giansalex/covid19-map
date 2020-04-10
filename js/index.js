@@ -81,7 +81,7 @@ function covid19(mapId, baseDataUrl) {
     }
 
     function loadMarkers() {
-        return requestJson(baseDataUrl + 'data.json')
+        return requestJson(baseDataUrl + 'points.json')
         .then(function(marks) {
             
             var markers = L.markerClusterGroup();
