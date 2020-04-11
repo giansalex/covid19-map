@@ -33,6 +33,9 @@
     "webpack-dev-server": "^3.10.3"
   },
   "dependencies": {
+    "axios": "^0.19.2",
+    "dnslink-cloudflare": "^2.0.4",
+    "ipfs-http-client": "^43.0.1",
     "leaflet": "^1.6.0",
     "leaflet.markercluster": "^1.4.1"
   }
