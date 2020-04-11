@@ -6,6 +6,7 @@ Mapa de infectados por COVID-19 en Perú, almacenado en el [IPFS](https://ipfs.i
 Para modificar los archivos e inicar la aplicacion en modo desarrollo, ejecutar:
 
 ```
+npm i
 npm run dev
 ```
 
@@ -13,6 +14,7 @@ npm run dev
 Para generar los archivos (css,js,images) optimizados para publicación, ejecutar:
 
 ```
+npm ci
 npm run build
 ```
 
