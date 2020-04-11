@@ -19,6 +19,7 @@ cp manifest.json $publishDir
 cp favicon.png $publishDir
 cp -r images $publishDir
 cp -r dist $publishDir
+cp -r data $publishDir
 
 echo "Upload publish to IPFS"
 
