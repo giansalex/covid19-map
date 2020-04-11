@@ -31,3 +31,12 @@ la siguiente forma:
 
 Finalmente si quieres ir más allá, necesitas tener un dominio configurado en cloudflare,
 y una cuenta en temporal.cloud (IPFS Gateway) u otro servicio similar.
+
+## Configuraciones Requeridas
+
+- `COVID_URL` 
+- `COVID_KEY`
+- `TEMPORAL_USER`
+- `TEMPORAL_PASS`
+- `CF_API_TOKEN` (Cloudflare API Token)
+- `CF_DOMAIN`

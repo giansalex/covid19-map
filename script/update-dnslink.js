@@ -22,5 +22,5 @@ async function main(token, domain, hash) {
 }
 
 main(process.env.CF_API_TOKEN,
-     process.env.DOMAIN,
+     process.env.CF_DOMAIN,
      process.env.IPFS_HASH);
