@@ -5,7 +5,7 @@ name: covid-publish
 
 on:
   schedule:
-    - cron:  '0 22 * * *'
+    - cron:  '0 1/21 * * *'
 
 jobs:
   build:
