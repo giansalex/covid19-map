@@ -1,7 +1,7 @@
 const axios = require('axios').default;
 const fs = require('fs');
 
-async function main(apiUrl, apiKey, directoryToSave) {
+async function main(apiUrl, apiKey, directoryToSave, domain) {
     const covidApi = axios.create({
         baseURL: apiUrl,
         headers: {
@@ -11,7 +11,13 @@ async function main(apiUrl, apiKey, directoryToSave) {
         }
     });
     
+    var dateSaved = await getDateDeployed(domain);
     var dateParam = getDateLima();
+
+    if (dateSaved.toLocaleDateString() === dateParam.toLocaleDateString()) {
+        console.log('Date already published ' + dateSaved.toLocaleDateString());
+        return process.exit(1);
+    }
     
     const statsResponse = await getApiStats(covidApi, dateParam);
     if (!statsResponse || !statsResponse.data) return process.exit(1);
@@ -24,6 +30,12 @@ async function main(apiUrl, apiKey, directoryToSave) {
 
     await saveMarksResponse(directoryToSave + '/points.json', marksResponse);
     console.log('Points Saved');
+}
+
+async function getDateDeployed(domain) {
+    const response = await axios.get(`https://${domain}/data/stats.json`);
+    
+    return new Date(response.data.date);
 }
 
 function getDateLima() {
@@ -99,7 +111,8 @@ async function start() {
     try {
         await main(process.env.COVID_URL,
             process.env.COVID_KEY,
-            process.env.DATA_DIR);
+            process.env.DATA_DIR,
+            process.env.CF_DOMAIN);
     } catch (error) {
         console.log(error);
         return process.exit(-1);
