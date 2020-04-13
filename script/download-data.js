@@ -11,7 +11,8 @@ async function main(apiUrl, apiKey, directoryToSave) {
         }
     });
     
-    const dateParam = new Date();
+    var dateParam = getDateLima();
+    
     const statsResponse = await getApiStats(covidApi, dateParam);
     if (!statsResponse || !statsResponse.data) return process.exit(1);
     
@@ -23,6 +24,15 @@ async function main(apiUrl, apiKey, directoryToSave) {
 
     await saveMarksResponse(directoryToSave + '/points.json', marksResponse);
     console.log('Points Saved');
+}
+
+function getDateLima() {
+    // America/Lima TimezoneOffset (-05:00)
+    const limaTimeOffset = 5;
+    const date = new Date(); // UTC date
+    date.setHours(date.getHours() - limaTimeOffset);
+
+    return date;
 }
 
 function getApiStats(api, date) {
