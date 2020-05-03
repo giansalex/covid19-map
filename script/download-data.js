@@ -12,7 +12,7 @@ async function main(apiUrl, apiKey, directoryToSave, domain) {
     });
     
     var dateSaved = await getDateDeployed(domain);
-    var dateParam = getDateLima();
+    var dateParam = await getLatestVersionApp();
 
     if (dateSaved.toLocaleDateString() === dateParam.toLocaleDateString()) {
         console.log('Date already published ' + dateSaved.toLocaleDateString());
@@ -38,13 +38,11 @@ async function getDateDeployed(domain) {
     return new Date(response.data.date);
 }
 
-function getDateLima() {
-    // America/Lima TimezoneOffset (-05:00)
-    const limaTimeOffset = 5;
-    const date = new Date(); // UTC date
-    date.setHours(date.getHours() - limaTimeOffset);
-
-    return date;
+function getLatestVersionApp() {
+    const response = await api.get('dates');
+    var latest = response.data[0].name.split('/');
+    
+    return new Date(latest[2], parseInt(latest[1]) - 1, latest[0]);
 }
 
 function getApiStats(api, date) {
