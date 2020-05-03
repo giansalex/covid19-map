@@ -5,7 +5,7 @@ async function main(apiUrl, apiKey, directoryToSave, domain) {
     const covidApi = axios.create({
         baseURL: apiUrl,
         headers: {
-            'K-Device': apiKey,
+            'device-key': apiKey,
             'Content-Type': 'application/json; charset=utf-8',
             'User-Agent': 'Nexus 5 / Android 4.4.4 / Android 4.4.4'
         }
@@ -25,7 +25,7 @@ async function main(apiUrl, apiKey, directoryToSave, domain) {
     await saveStatsResponse(directoryToSave + '/stats.json', statsResponse, dateParam);
     console.log('Stats saved for date ' + dateParam);
 
-    const marksResponse = await getApiMarks(covidApi);
+    const marksResponse = await getApiMarks(covidApi, dateParam);
     if (!marksResponse || !marksResponse.data) return process.exit(1);
 
     await saveMarksResponse(directoryToSave + '/points.json', marksResponse);
@@ -48,22 +48,26 @@ function getDateLima() {
 }
 
 function getApiStats(api, date) {
-    return api.get('summary/peru', {
+    return api.get('quantities', {
         params: {
             date: formatDate('YYYYMMDD', date)
         }
     });
 }
 
-function getApiMarks(api) {
-    return api.get('marks');
+function getApiMarks(api, date) {
+    return api.get('marks/check-version', {
+        params: {
+            version: formatDate('YYYYMMDD', date)
+        }
+    });
 }
 
 function saveStatsResponse(path, response, datetime) {
     const data = response.data;
     const stats = {
         date: datetime,
-        actives: data.TotalConfirmed,
+        actives: data.TotalActived,
         recovereds: data.TotalRecovered,
         deaths: data.TotalDeaths
     };
