@@ -66,7 +66,7 @@ function saveStatsResponse(path, response, datetime) {
     const data = response.data;
     const stats = {
         date: datetime,
-        actives: data.TotalActived,
+        actives: data.TotalConfirmed,
         recovereds: data.TotalRecovered,
         deaths: data.TotalDeaths
     };
