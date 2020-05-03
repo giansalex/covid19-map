@@ -7,8 +7,12 @@ x=$?
 if [ "$x" -eq "0" ]; then
 	echo "Building publish package"
 else
-	echo "No deployment required"
-	exit 0
+	if [ "$x" -eq "1" ]; then
+		echo "No deployment required"
+		exit 0
+	fi
+	echo "ERROR downloading data!"
+	exit $x
 fi
 
 publishDir="./publish"
