@@ -7,12 +7,13 @@ async function main(apiUrl, apiKey, directoryToSave, domain) {
         headers: {
             'device-key': apiKey,
             'Content-Type': 'application/json; charset=utf-8',
+            'Accept': 'application/json',
             'User-Agent': 'Nexus 5 / Android 4.4.4 / Android 4.4.4'
         }
     });
     
     var dateSaved = await getDateDeployed(domain);
-    var dateParam = await getLatestVersionApp();
+    var dateParam = await getLatestVersionApp(covidApi);
 
     if (dateSaved.toLocaleDateString() === dateParam.toLocaleDateString()) {
         console.log('Date already published ' + dateSaved.toLocaleDateString());
@@ -38,7 +39,7 @@ async function getDateDeployed(domain) {
     return new Date(response.data.date);
 }
 
-async function getLatestVersionApp() {
+async function getLatestVersionApp(api) {
     const response = await api.get('dates');
     var latest = response.data[0].name.split('/');
     
