@@ -4,9 +4,8 @@
 name: covid-publish
 
 on:
-  push:
-#  schedule:
-#    - cron:  '0 1/21 * * *'
+  schedule:
+    - cron:  '0 1/21 * * *'
 
 jobs:
   build:
