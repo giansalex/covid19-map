@@ -38,7 +38,7 @@ async function getDateDeployed(domain) {
     return new Date(response.data.date);
 }
 
-function getLatestVersionApp() {
+async function getLatestVersionApp() {
     const response = await api.get('dates');
     var latest = response.data[0].name.split('/');
     
