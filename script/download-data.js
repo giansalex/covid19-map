@@ -78,7 +78,7 @@ function saveStatsResponse(path, response, datetime) {
 }
 
 function saveMarksResponse(path, response) {
-    const points = response.data.map(item => {
+    const points = response.data.marks.map(item => {
         return {lat: item.lat, lon: item.lon};
     });
     const json = JSON.stringify(points);
