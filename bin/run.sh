@@ -24,6 +24,7 @@ cp favicon.png $publishDir
 cp -r images $publishDir
 cp -r dist $publishDir
 cp -r data $publishDir
+cp -r dist/images $publishDir
 
 echo "Upload publish to IPFS"
 
