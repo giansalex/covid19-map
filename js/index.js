@@ -77,7 +77,7 @@ function covid19(mapId, baseDataUrl) {
             console.log(error);
         })
         .finally(function () {
-            return loadMarkers();
+            return Promise.all([loadStats(), loadMarkers()]);
         });    
     }
 
@@ -87,6 +87,7 @@ function covid19(mapId, baseDataUrl) {
             
             var markers = L.markerClusterGroup();
             marks.forEach(function(mark) {
+                if (!mark) return; 
                 
                 var cMark = L.circleMarker([mark.lat, mark.lon], {
                     color: '#f03',
@@ -100,11 +101,13 @@ function covid19(mapId, baseDataUrl) {
                 markers.addLayer(cMark);
             });
             mymap.addLayer(markers);
-            
-            return requestJson(baseDataUrl + 'stats.json')
-            .then(function (data) {
-                createLegend(data);
-            });
+        });
+    }
+
+    function loadStats() {
+        return requestJson(baseDataUrl + 'stats.json')
+        .then(function (data) {
+            createLegend(data);
         });
     }
 
