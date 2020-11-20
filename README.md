@@ -2,6 +2,8 @@
 
 Mapa de infectados por COVID-19 en Perú, almacenado en el [IPFS](https://ipfs.io/) y distribuido por cloudflare-ipfs.
 
+Ultima version: [bafybeid2axi5sz2s77j2nvd74fyaxlbkmyynxsy73dvs34e2ueiofch6r4](https://bafybeid2axi5sz2s77j2nvd74fyaxlbkmyynxsy73dvs34e2ueiofch6r4.ipfs.dweb.link/)
+
 ## Iniciar
 Para modificar los archivos e inicar la aplicacion en modo desarrollo, ejecutar:
 
