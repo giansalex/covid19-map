@@ -1,8 +1,8 @@
 name: covid-publish
 
 on:
-  schedule:
-    - cron:  '0 23 */2 * *'
+  push:
+    branches: [main]
 
 jobs:
   build:
